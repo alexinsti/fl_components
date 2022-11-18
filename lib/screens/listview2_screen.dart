@@ -10,15 +10,16 @@ class Listview2Screen extends StatelessWidget {
       appBar: AppBar(title: const Text("listview Tipo 2")),
       body: ListView.separated(
         itemBuilder: (context, index) => ListTile(
-          trailing: const Icon(Icons.arrow_forward_ios_outlined),
-          title: Text(options[index]),
+          trailing: const Icon(AppRoutes.menuCasas[index].icon),
+          title: Text(AppRoutes.menuCasas[index].name),
           onTap: () {
-            final casa = options[index];
-            print(casa);
+            /*final route = MaterialPageRoute(
+                builder: (context) => const Listview1Screen());*/
+            Navigator.pushNamed(context, AppRoutes.menuCasas[index].route);
           },
         ),
         separatorBuilder: (context, index) => const Divider(),
-        itemCount: options.length,
+        itemCount: AppRoutes.menuCasas.length,
       ),
     );
   }
